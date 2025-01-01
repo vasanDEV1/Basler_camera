@@ -13,7 +13,7 @@ grab = camera.RetrieveResult(2000, py.TimeoutHandling_ThrowException)
 
 if grab.GrabSucceeded():
     img = grab.Array
-    _,thresh1 = cv2.threshold(img, 180, 255, cv2.THRESH_BINARY)
+    _,thresh1 = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
 
     contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
     '''for i in contours:
@@ -52,7 +52,7 @@ if grab.GrabSucceeded():
     plt.text(int(x)+35, int(y)+20, 'center', fontsize = 5)
     plt.text(int(c1)+35,int(c2)+20, 'p1',fontsize=5)
     plt.text(int(c3)-35,int(c4)-20, 'p2',fontsize=5)
-    plt.text(800,0,f'Distance btw p1 & p2 in px: {2 * radius }',fontsize=15)
+    plt.text(800,0,f'Distance btw p1 & p2 in mm {2 * radius*0.07 }',fontsize=15)
     plt.plot(x,y,'ro',c1,c2,'ro',c3,c4,'ro')
     plt.plot([x,c1,c3],[y,c2,c4])
     

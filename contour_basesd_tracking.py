@@ -27,7 +27,7 @@ def main():
 
                 for contour in contours:
                     area = cv2.contourArea(contour)
-                    if (area>100000):
+                    if (area>100000 and area<1000000):
                         x, y, w, h = cv2.boundingRect(contour)
                         cv2.rectangle(image_color, (x, y), (x + w, y + h), (0, 255, 0), 2)
                         
